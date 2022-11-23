@@ -4,7 +4,7 @@ const BreadDetailScreen = ({navigation}) => {
     return( 
         <View style={styles.container}>
             <Text style={styles.screenTitle}>Category Bread Screen</Text>
-            <Pressable onPress={() => {navigation.navigate('Categories')}}>
+            <Pressable onPress={() => {navigation.popToTop()}}>
                 <Text style={styles.buttonText}>Ir a Inicio</Text>
             </Pressable>
         </View>
