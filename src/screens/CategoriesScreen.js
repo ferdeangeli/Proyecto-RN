@@ -1,13 +1,30 @@
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
+import {CATEGORIES} from '../data/categories';
+import GridItem from "../components/GridItem";
 
 const CategoriesScreen = ({navigation}) => {
+
+    const handleSelectedCategory = (item)=> {
+        navigation.navigate('Bread', {
+            categoryID: item.id,
+            name: item.title,
+        })
+    }
+
+    const renderGridItem = ({item}) => {
+        return(
+            <GridItem item={item} onSelected={handleSelectedCategory} />
+        )
+        
+    }
+
     return( 
-        <View style={styles.container}>
-            <Text style={styles.screenTitle}>Categories Screen</Text>
-            <Pressable onPress={() => {navigation.navigate('Bread')}}>
-                <Text style={styles.buttonText}>Ir a CategoryBreadScreen</Text>
-            </Pressable>
-        </View>
+        <FlatList
+            data= {CATEGORIES}
+            keyExtractor= {(item) => item.id}
+            renderItem= {renderGridItem}
+            numColumns={2}
+        />
     )
 }
 
