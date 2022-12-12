@@ -1,6 +1,10 @@
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useSelector } from "react-redux";
 
 const BreadDetailScreen = ({navigation}) => {
+
+    const bread = useSelector((state) => state.bread.selected)
+
     return( 
         <View style={styles.container}>
             <Text style={styles.screenTitle}>Category Bread Screen</Text>
