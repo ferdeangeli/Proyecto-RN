@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import ShopNavigator from './ShopNavigator';
 import CartNavigator from './CartNavigator';
+import OrderNavigator from './OrderNavigator';
 import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons'
 
@@ -31,6 +32,14 @@ const BottomTabNavigator = () => {
                     <View style={styles.item}>
                         <Ionicons name='cart' size={20} />
                         <Text>Carrito</Text>
+                    </View>
+                )
+            }} />
+            <BottomTabs.Screen name='OrdersTab' component={OrderNavigator} options={{
+                tabBarIcon: ({focus}) => (
+                    <View style={styles.item}>
+                        <Ionicons name='list' size={20} />
+                        <Text>Ordenes</Text>
                     </View>
                 )
             }} />

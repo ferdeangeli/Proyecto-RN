@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const BreadItem = ({item, onSelected}) => {
+const BreadItem = ({ item, onSelected }) => {
   return (
-    <View style={styles.breadItem}>
-        <TouchableOpacity style={styles.container} onPress={()=> onSelected}>
+    <TouchableOpacity style={styles.container} onPress={()=> onSelected(item)}>
+        <View style={styles.breadItem}>
             <View>
-                <View><Text style={styles.title}>{item.title}</Text></View>
+                <View><Text style={styles.title}>{item.name}</Text></View>
             </View>
             <View>
                 <Text style={styles.text}>Precio: {item.price}</Text>
                 <Text style={styles.text}>Peso: {item.weight}</Text>
             </View>
-        </TouchableOpacity>
-    </View>
+        </View>
+    </TouchableOpacity>
   )
 }
 

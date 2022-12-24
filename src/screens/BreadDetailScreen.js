@@ -1,16 +1,29 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useSelector } from "react-redux";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "../store/actions/cart.action";
 
-const BreadDetailScreen = ({navigation}) => {
 
-    const bread = useSelector((state) => state.bread.selected)
+
+const BreadDetailScreen = () => {
+
+    const bread = useSelector((state) => state.breads.selected)
+
+    const dispatch = useDispatch()
+
+    const handleAddItemCart = () => {
+        dispatch(addItem(bread))
+    }
 
     return( 
         <View style={styles.container}>
-            <Text style={styles.screenTitle}>Category Bread Screen</Text>
-            <Pressable onPress={() => {navigation.popToTop()}}>
-                <Text style={styles.buttonText}>Ir a Inicio</Text>
-            </Pressable>
+                <View style={styles.screen}>
+                    <Text style={styles.title}>{bread.name}</Text>
+                    <Text style={styles.description}>{bread.description}</Text>
+                    <Text style={styles.price}>Precio: ${bread.price}</Text>
+                    <View style={styles.button}>
+                        <Button title="Agregar al carrito" onPress={handleAddItemCart} />
+                    </View>
+            </View>
         </View>
     )
 }
@@ -18,21 +31,29 @@ const BreadDetailScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: 'purple',
+        padding: 10
+    },
+
+    screen: {
+        flex: 0.9,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    screenTitle:{
-        fontFamily: 'SonoMedium',
-        fontSize: 30,
-        color: 'white',
-        fontWeight: '700'
+
+    title: {
+        fontSize: 25,
+
     },
-    buttonText:{
-        fontFamily: 'SonoMedium',
-        fontSize: 20,
-        color: 'white'
+
+    price: {
+        fontSize: 30,
+        fontFamily: 'SonoMedium'
+    },
+
+    button: {
+        marginTop: 15
     }
+
 })
 
 export default BreadDetailScreen
