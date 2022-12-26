@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import ShopNavigator from './ShopNavigator';
 import CartNavigator from './CartNavigator';
 import OrderNavigator from './OrderNavigator';
@@ -10,7 +9,6 @@ const BottomTabs = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
-    <NavigationContainer>
         <BottomTabs.Navigator
             initialRouteName='ShopTab'
             screenOptions={{
@@ -44,7 +42,6 @@ const BottomTabNavigator = () => {
                 )
             }} />
         </BottomTabs.Navigator>
-    </NavigationContainer>
   );
 }
 
