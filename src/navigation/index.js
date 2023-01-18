@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import AuthNavigation from './AuthNavigation'
+import React from 'react'
 import BottomTabNavigator from './BottomTabNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
@@ -10,7 +9,8 @@ export default () => {
 
     return(
         <NavigationContainer>
-            {userId? <BottomTabNavigator /> : <AuthNavigation />}
+            <BottomTabNavigator />
         </NavigationContainer>
     )
 }
+

@@ -4,7 +4,8 @@ import { COLORS } from '../constants/colors'
 import { useDispatch } from 'react-redux'
 import { signUp } from '../store/actions/auth.action'
 
-const AuthScreen = () => {
+
+const AuthScreen = ({navigation}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -59,12 +60,13 @@ const styles = StyleSheet.create({
     screen:{
         flex: 1,
         justifyContent: 'center',
+        
+        backgroundColor: 'white',
         alignItems: 'center'
     },
     container: {
         width: '80%',
         maxWidth: 400,
-        backgroundColor: 'white',
         height: '50%',
         padding: 12
     },

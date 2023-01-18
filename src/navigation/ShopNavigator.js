@@ -1,9 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryBreadScreen from '../screens/CategoryBreadScreen';
-import BreadDetailScreen from '../screens/BreadDetailScreen';
-import COLORS from '../constants/colors'
+import ColorsScreen from '../screens/ColorsScreen';
+import GaleryScreen from '../screens/GaleryScreen';
+import ProductScreen from '../screens/ProductScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,18 +11,19 @@ const ShopNavigator = () => {
             <Stack.Navigator 
               initialRouteName='Categories' 
               screenOptions={{
-                headerStyle: {backgroundColor: 'red'},
-                headerTintColor: 'blue',
-                headerTitleStyle: {fontWeight: '600'}
+                headerStyle: {backgroundColor: '#7587C8'},
+                headerTintColor: '#2D2E32',
+                headerTitleStyle: {fontWeight: '800'}
                 }}
             >
-                <Stack.Screen name='Categories' component={CategoriesScreen} options={{title: 'Mi Pan'}} />
-                <Stack.Screen name='Bread' component={CategoryBreadScreen} options={ ({route}) => ({
+                <Stack.Screen name='Categories' component={CategoriesScreen} options={{title: 'Filamentos 3D'}} />
+                <Stack.Screen name='Colors' component={ColorsScreen} options={ ({route}) => ({
                     title: route.params.name
                 })} />
-                <Stack.Screen name='Details' component={BreadDetailScreen} options={({route}) => ({
+                <Stack.Screen name='Details' component={ProductScreen} options={({route}) => ({
                     title: route.params.name
                 })} />
+                 <Stack.Screen name='Galery' component={GaleryScreen} />
             </Stack.Navigator> 
     );
 }

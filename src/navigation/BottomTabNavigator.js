@@ -1,13 +1,18 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopNavigator from './ShopNavigator';
 import CartNavigator from './CartNavigator';
-import OrderNavigator from './OrderNavigator';
 import { View, Text, StyleSheet } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons'
+import AuthNavigation from './AuthNavigation';
+import { useSelector } from 'react-redux';
+
 
 const BottomTabs = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+
+    const userId = useSelector((state) => state.auth.userId)
+
   return (
         <BottomTabs.Navigator
             initialRouteName='ShopTab'
@@ -21,7 +26,7 @@ const BottomTabNavigator = () => {
                 tabBarIcon: ({focus}) => (
                     <View style={styles.item}>
                         <Ionicons name='home' size={20} />
-                        <Text>Tienda</Text>
+                        <Text>Home</Text>
                     </View>
                 )
             }} />
@@ -33,11 +38,11 @@ const BottomTabNavigator = () => {
                     </View>
                 )
             }} />
-            <BottomTabs.Screen name='OrdersTab' component={OrderNavigator} options={{
+            <BottomTabs.Screen name='LoginTab' component={AuthNavigation} options={{
                 tabBarIcon: ({focus}) => (
                     <View style={styles.item}>
-                        <Ionicons name='list' size={20} />
-                        <Text>Ordenes</Text>
+                        <Ionicons name='person' size={20} />
+                        <Text>{userId? "Mi perfil" : "Login" }</Text>
                     </View>
                 )
             }} />

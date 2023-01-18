@@ -23,9 +23,11 @@ export const signUp = (email, password) => {
             dispatch({type: SIGNUP,
                 token: resData.idToken,
                 userId: resData.localId,
+                userEmail: resData.email
             })
         } catch (error) {
             console.log(error)
         }
     }
 }
+

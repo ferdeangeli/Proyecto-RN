@@ -3,9 +3,10 @@ export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const CONFIRM_CART = 'CONFIRM_ITEM'
 import {URL_API} from '../../constants/Database'
 
-export const addItem = (item) => ({
+export const addItem = (item, quantity) => ({
     type: ADD_ITEM,
-    item
+    item,
+    quantity
 })
 
 export const removeItem = (itemID) => ({

@@ -20,7 +20,8 @@ const CartReducer = (state = initialState, action) => {
         (item) => item.id === action.item.id
       );
       if (indexItem === -1) {
-        const item = { ...action.item, quantity: 1 };
+        const quant = parseInt(action.quantity)
+        const item = { ...action.item, quantity: quant };
         const updateCart = [...state.items, item];
         console.log(updateCart);
         return { ...state, items: updateCart, total: sumTotal(updateCart) };
@@ -33,6 +34,7 @@ const CartReducer = (state = initialState, action) => {
       return { ...state, items, total: sumTotal(items) };
     case CONFIRM_CART:
       return { ...state, items: [], total: 0 };
+              
     default:
       return state;
   }
