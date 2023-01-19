@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Panaderia",
-    "slug": "Panaderia",
+    "name": "proyecto-final",
+    "slug": "proyecto-final",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

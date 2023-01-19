@@ -1,19 +1,26 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, Button } from 'react-native'
+import { CheckBox } from '@rneui/themed'
 import React, { useState } from 'react'
 import { COLORS } from '../constants/colors'
 import { useDispatch } from 'react-redux'
-import { signUp } from '../store/actions/auth.action'
+import { signUp, signIn } from '../store/actions/auth.action'
 
 
 const AuthScreen = ({navigation}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [isSelected, setSelection] = useState(false)
     const dispatch = useDispatch()
 
     const handleSignUp = () => {
-        dispatch(signUp(email, password))
+        if(isSelected === true){
+            dispatch(signUp(email, password))
+            
+        }else{
+            dispatch(signIn(email, password))
+
+        }
     }
 
   return (
@@ -39,6 +46,15 @@ const AuthScreen = ({navigation}) => {
                     autoCapitalize='none'
                     onChangeText={setPassword}
                     initialValue=""
+                />
+            </View>
+
+            <View style={styles.checkboxContainer}>
+                <CheckBox
+                    center
+                    checked={isSelected}
+                    onPress={() => setSelection(!isSelected)}
+                    title="Registrarme por primera vez"
                 />
             </View>
 
@@ -79,5 +95,15 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10
-    }
+    },
+    checkboxContainer: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    checkbox: {
+        alignSelf: 'center',
+    },
+    checkboxText: {
+        margin: 8,
+    },
 })
