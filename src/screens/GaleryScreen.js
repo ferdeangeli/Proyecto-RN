@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   title3:{
     fontFamily: 'SonoMedium',
     fontSize: 18,
-    marginTop: 15
+    marginTop: 15,
+    marginBottom: 15
   },
 
 })
